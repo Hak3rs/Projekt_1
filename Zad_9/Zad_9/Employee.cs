@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,45 @@ namespace Zad_9
         }
         public void AddGrade(double grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 10)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Grade !!");
+            }
+        }
+
+        public void AddGrade(float grade)
+        {
+            double dgrade = (double)grade;
+            this.AddGrade(dgrade);
+        }
+
+        public void AddGrade(long grade)
+        {
+            double dgrade = (double)grade;
+            this.AddGrade(dgrade);
+        }
+
+        public void AddGrade(decimal grade)
+        {
+            double dgrade = (double)grade;
+            this.AddGrade(dgrade);
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (double.TryParse(grade, out double dgrade))
+            {
+                this.AddGrade(dgrade);
+            }
+            else 
+            {
+                Console.WriteLine("Value is not DOUBLE");
+            }
+            
         }
 
         public Statistics GetStatistics()
