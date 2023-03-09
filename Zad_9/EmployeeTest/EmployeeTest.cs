@@ -23,7 +23,7 @@ namespace EmployeeTest
             emp4.AddGrade(3);
             emp4.AddGrade(4);
 
-            var statemp4 = emp4.GetStatistics();
+            var statemp4 = emp4.GetStatisticsWithForeach();
             Assert.AreEqual(2.5, statemp4.Average);
         }
 
@@ -42,7 +42,7 @@ namespace EmployeeTest
             emp5.AddGrade(9);
             emp5.AddGrade(10);
 
-            var statemp5 = emp5.GetStatistics();
+            var statemp5 = emp5.GetStatisticsWithForeach();
 
             Assert.AreEqual(10, statemp5.Max);
             Assert.AreEqual(-5, statemp5.Min);
