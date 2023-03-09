@@ -15,7 +15,15 @@ while (true)
     {
         break;
     }
-    emp1.AddGrade(grade);
+    try
+    {
+        emp1.AddGrade(grade);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine("Exception catched\t" + e.Message);
+    }
+    
 }
 var statemp1 = emp1.GetStatistics();
 

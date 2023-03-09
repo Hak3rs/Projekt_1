@@ -8,10 +8,13 @@ namespace Zadanie_12
 {
     public class Employee
     {
+        private const string corpo = "Hak3rs"; 
+        //private readonly char sex = 'M';
         public Employee(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
+            //this.sex = 'K';
         }
 
         private List<double> grades = new List<double>();
@@ -34,7 +37,7 @@ namespace Zadanie_12
             }
             else
             {
-                Console.WriteLine("Invalid Grade !!");
+                throw new Exception("Invalid Grade !!");
             }
         }
         public void AddGrade(char grade)
@@ -62,8 +65,7 @@ namespace Zadanie_12
                     this.grades.Add(2);
                     break;
                 default:
-                    Console.WriteLine("Wrong letter");
-                    this.grades.Add(0);
+                    throw new Exception("Wrong letter");
                     break;
             }
         }
@@ -98,7 +100,7 @@ namespace Zadanie_12
             }
             else
             {
-                Console.WriteLine("Value is not DOUBLE");
+                throw new Exception("Value is not DOUBLE");
             }
 
         }
