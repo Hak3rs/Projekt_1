@@ -3,7 +3,7 @@
 Console.WriteLine("===================================================");
 Console.WriteLine("WITAMY W PROGRAMIE DO WYSTAWIANIA OCEN PRACOWNINKOM");
 Console.WriteLine("===================================================\n");
-var emp1 = new Employee("Karol", "Mikasa", 28,'M');
+var emp1 = new Supervisor("Karol", "Mikasa", 28,'M');
 Console.WriteLine("\n===================================================");
 Console.WriteLine("PRACOWNIK");
 Console.WriteLine("IMIE:\t" + emp1.Name);

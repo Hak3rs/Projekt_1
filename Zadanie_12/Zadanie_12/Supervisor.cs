@@ -6,31 +6,21 @@ using System.Threading.Tasks;
 
 namespace Zadanie_12
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
-        private const string corpo = "Hak3rs";
-
-        //private readonly char sex = 'M';
-
-        public Employee(string name, string surname, int age, char sex)
-            //:base(name, surname, age, sex)
+        public Supervisor(string name, string surname, int age, char sex) 
         {
-            this.Name = name; ;
-            this.Surname = surname; 
+            this.Name = name;
+            this.Surname = surname;
             this.Age = age;
             this.Sex = sex;
-            //this.sex = 'K';
         }
-        public Employee()
-            : this("name", "surname", 0, 'M')
-        { }
 
+        private List<double> grades = new List<double>();
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
         public char Sex { get; private set; }
-
-        private List<double> grades = new List<double>();
 
         public void AddGrade(double grade)
         {
@@ -90,24 +80,67 @@ namespace Zadanie_12
             double dgrade = (double)grade;
             this.AddGrade(dgrade);
         }
-
-        public void AddGrade(string grade)
+        public void AddGrade(string grade) 
         {
-            if (double.TryParse(grade, out double dgrade))
+            switch (grade)
             {
-                this.AddGrade(dgrade);
-            }
-            else if (char.TryParse(grade, out char letter))
-            {
-                this.AddGrade(letter);
-            }
-            else
-            {
-                throw new Exception("Value is not DOUBLE");
-            }
+                case "6":
+                    this.grades.Add(100);
+                    break;
 
+                case "5+":
+                case "+5":
+                    this.grades.Add(85);
+                    break;
+                case "5":
+                    this.grades.Add(80);
+                    break;
+                case "5-":
+                case "-5":
+                    this.grades.Add(75);
+                    break;
+
+                case "4+":
+                case "+4":
+                    this.grades.Add(70);
+                    break;
+                case "4":
+                    this.grades.Add(65);
+                    break;
+                case "4-":
+                case "-4":
+                    this.grades.Add(60);
+                    break;
+                case "3+":
+                case "+3":
+                    this.grades.Add(55);
+                    break;
+                case "3":
+                    this.grades.Add(50);
+                    break;
+                case "3-":
+                case "-3":
+                    this.grades.Add(45);
+                    break;
+                case "2+":
+                case "+2":
+                    this.grades.Add(40);
+                    break;
+                case "2":
+                    this.grades.Add(35);
+                    break;
+                case "2-":
+                case "-2":
+                    this.grades.Add(30);
+                    break;
+                case "1":
+                    this.grades.Add(20);
+                    break;
+                default:
+                    this.grades.Add(0);
+                    break;
+            }
         }
-
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
