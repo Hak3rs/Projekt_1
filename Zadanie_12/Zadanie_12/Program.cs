@@ -3,8 +3,18 @@
 Console.WriteLine("===================================================");
 Console.WriteLine("WITAMY W PROGRAMIE DO WYSTAWIANIA OCEN PRACOWNINKOM");
 Console.WriteLine("===================================================\n");
-var emp1 = new Employee("Karol", "Mikasa");
+var emp1 = new Employee("Karol", "Mikasa", 28,'M');
+Console.WriteLine("\n===================================================");
+Console.WriteLine("PRACOWNIK");
+Console.WriteLine("IMIE:\t" + emp1.Name);
+Console.WriteLine("NAZWISKO:\t" + emp1.Surname);
+Console.WriteLine("WIEK:\t" + emp1.Age);
+Console.WriteLine("PLEC:\t" + emp1.Sex);
+Console.WriteLine("===================================================\n");
 Console.WriteLine("Zatrzymanie dodawania ocen: Q");
+
+Console.WriteLine();
+
 int nr = 1;
 while (true)
 {

@@ -6,29 +6,22 @@ using System.Threading.Tasks;
 
 namespace Zadanie_12
 {
-    public class Employee
+    public class Employee : Person
     {
-        private const string corpo = "Hak3rs"; 
+        private const string corpo = "Hak3rs";
         //private readonly char sex = 'M';
-        public Employee(string name, string surname)
+
+        public Employee(string name, string surname, int age, char sex)
+            :base(name, surname, age, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
             //this.sex = 'K';
         }
+        public Employee()
+            : this("name", "surname", 0, 'M')
+        { }
 
         private List<double> grades = new List<double>();
-        public string Name
-        {
-            get;
-            private set;
-        }
 
-        public string Surname
-        {
-            get;
-            private set;
-        }
         public void AddGrade(double grade)
         {
             if (grade >= 0 && grade <= 10)
