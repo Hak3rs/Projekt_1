@@ -3,13 +3,23 @@
 Console.WriteLine("===================================================");
 Console.WriteLine("WITAMY W PROGRAMIE DO WYSTAWIANIA OCEN PRACOWNINKOM");
 Console.WriteLine("===================================================\n");
-var emp1 = new Supervisor("Karol", "Mikasa", 28,'M');
-Console.WriteLine("\n===================================================");
-Console.WriteLine("PRACOWNIK");
-Console.WriteLine("IMIE:\t" + emp1.Name);
-Console.WriteLine("NAZWISKO:\t" + emp1.Surname);
-Console.WriteLine("WIEK:\t" + emp1.Age);
-Console.WriteLine("PLEC:\t" + emp1.Sex);
+var emp1 = new EmployeeInFile("Karol", "Mikasa", 28,'M');
+emp1.AddGrade(25.5);
+emp1.AddGrade('a');
+emp1.AddGrade('b');
+emp1.AddGrade("50");
+emp1.AddGrade(0.5f);
+emp1.AddGrade(0.5m);
+emp1.AddGrade(8);
+
+var statemp1 = emp1.GetStatistics();
+Console.WriteLine($"Average: \t{statemp1.Average:N2}");
+Console.WriteLine($"Min: \t{statemp1.Min}");
+Console.WriteLine($"Max: \t{statemp1.Max}");
+Console.WriteLine($"Average Letter: \t{statemp1.AverageLetter}"); 
+
+/*Console.WriteLine("\n===================================================");
+emp1.SayHello();
 Console.WriteLine("===================================================\n");
 Console.WriteLine("Zatrzymanie dodawania ocen: Q");
 
@@ -41,6 +51,6 @@ Console.WriteLine("==========FOREACH==========");
 Console.WriteLine($"Average: \t{statemp1.Average:N2}");
 Console.WriteLine($"Min: \t{statemp1.Min}");
 Console.WriteLine($"Max: \t{statemp1.Max}");
-Console.WriteLine($"Average Letter: \t{statemp1.AverageLetter}");
+Console.WriteLine($"Average Letter: \t{statemp1.AverageLetter}");*/
 
 
