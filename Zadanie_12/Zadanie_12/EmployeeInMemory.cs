@@ -110,39 +110,14 @@ namespace Zadanie_12
 
         public override Statistics GetStatistics()
         {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Min = double.MaxValue;
-            statistics.Max = double.MinValue;
+            var stat = new Statistics();
 
-
-            foreach (var grade in this.grades)
+            foreach (var grade in this.grades) 
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
+                stat.AddGrade(grade);
             }
-            statistics.Average /= this.grades.Count;
-            switch (statistics.Average)
-            {
-                case var a when a >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var a when a >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var a when a >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var a when a >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
+            return stat;
 
-            return statistics;
         }
     }
 }

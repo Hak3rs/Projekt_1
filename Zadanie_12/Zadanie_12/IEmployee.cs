@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Zadanie_12.EmployeeBase;
 
 namespace Zadanie_12
 {
@@ -18,6 +19,7 @@ namespace Zadanie_12
 
         void AddGrade(string grade);
 
+        event GradeAddDelegate GradeAdded;
         string Name { get; }
         string Surname { get; }
         int Age { get; }
