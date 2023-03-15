@@ -9,6 +9,8 @@ namespace Zadanie_12
     public abstract class EmployeeBase : IEmployee
     {
         private const string corpo = "Hak3rs";
+        public delegate void GradeAddDelegate(object sender, EventArgs args);
+        public abstract event GradeAddDelegate GradeAdded;
         public EmployeeBase(string name, string surname, int age, char sex) 
         {
             this.Name = name;

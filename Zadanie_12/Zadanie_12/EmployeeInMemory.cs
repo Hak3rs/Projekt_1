@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ namespace Zadanie_12
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddDelegate GradeAdded;
         private List<double> grades = new List<double>();
         public string Name { get; private set; }
         public string Surname { get; private set; }
@@ -20,6 +21,7 @@ namespace Zadanie_12
             this.Age = age;
             this.Sex = sex;
         }
+
         public override void SayHello()
         {
             base.SayHello();
@@ -31,6 +33,11 @@ namespace Zadanie_12
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                if (GradeAdded != null)
+                {
+                    Console.WriteLine(grade);
+                    GradeAdded(this,new EventArgs());
+                }
             }
             else
             {
@@ -64,7 +71,6 @@ namespace Zadanie_12
                     break;
                 default:
                     throw new Exception("Wrong letter");
-                    break;
             }
         }
 

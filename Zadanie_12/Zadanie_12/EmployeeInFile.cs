@@ -8,6 +8,7 @@ namespace Zadanie_12
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public override event GradeAddDelegate GradeAdded;
         private const string filename = "grades.txt";
         public EmployeeInFile(string name, string surname, int age, char sex) : base(name, surname, age, sex)
         {
@@ -18,76 +19,65 @@ namespace Zadanie_12
             using (var writer = File.AppendText(filename))
             {
                 writer.WriteLine(grade);
+                GradeAdded(this, new EventArgs());
             }
         }
 
         public override void AddGrade(char grade)
         {
-            using (var writer = File.AppendText(filename))
-            {
                 switch (grade)
                 {
                     case 'A':
                     case 'a':
-                        writer.WriteLine(100);
+                        this.AddGrade(100);
                         break;
                     case 'B':
                     case 'b':
-                        writer.WriteLine(80);
+                        this.AddGrade(80);
                         break;
                     case 'C':
                     case 'c':
-                        writer.WriteLine(60);
+                        this.AddGrade(60);
                         break;
                     case 'D':
                     case 'd':
-                        writer.WriteLine(40);
+                        this.AddGrade(40);
                         break;
                     case 'E':
                     case 'e':
-                        writer.WriteLine(20);
+                        this.AddGrade(20);
                         break;
                     default:
                         throw new Exception("Wrong letter");
-                        break;
                 }
-            }
         }
 
         public override void AddGrade(float grade)
         {
             double dgrade = (double)grade;
-            using (var writer = File.AppendText(filename))
-            {
-                writer.WriteLine(dgrade);
-            }
+            this.AddGrade(dgrade);
+                //writer.WriteLine(dgrade);
         }
 
         public override void AddGrade(long grade)
         {
             double dgrade = (double)grade;
-            using (var writer = File.AppendText(filename))
-            {
-                writer.WriteLine(dgrade);
-            }
+            this.AddGrade(dgrade);
+                //writer.WriteLine(dgrade);
         }
 
         public override void AddGrade(decimal grade)
         {
             double dgrade = (double)grade;
-            using (var writer = File.AppendText(filename))
-            {
-                writer.WriteLine(dgrade);
-            }
+            this.AddGrade(dgrade);
         }
 
         public override void AddGrade(string grade)
         {
-            using (var writer = File.AppendText(filename))
-            {
                 if (double.TryParse(grade, out double dgrade))
                 {
-                    writer.WriteLine(dgrade);
+                    this.AddGrade(dgrade);
+                    //writer.WriteLine(dgrade);
                 }
                 else if (char.TryParse(grade, out char letter))
                 {
@@ -97,7 +87,6 @@ namespace Zadanie_12
                 {
                     throw new Exception("Value is not DOUBLE");
                 }
-            }
         }
 
         public override Statistics GetStatistics()
